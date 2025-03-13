@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("console.log('Hello, World!')\n\n//# sourceURL=webpack://mesto-project-ff/./src/index.js?");
+eval("var numbers = [2, 3, 5];\n\n// Стрелочная функция. Не запнётся ли на ней Internet Explorer?\nvar doubledNumbers = numbers.map(function (number) {\n  return number * 2;\n});\nconsole.log(doubledNumbers); // 4, 6, 10\n\n//# sourceURL=webpack://mesto-project-ff/./src/index.js?");
 
 /***/ })
 
