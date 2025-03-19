@@ -1,4 +1,5 @@
 import './pages/index.css';
+import { initialCards } from './scripts/cards.js';
 // @todo: Темплейт карточки
 const cardTemplate = document.querySelector("#card-template").content;
 // @todo: DOM узлы
@@ -22,6 +23,13 @@ function deleteOneCard(evt) {
 }
 // @todo: Вывести карточки на страницу.
 initialCards.forEach((card) => {
-  const cardElement = createCard(card, deleteOneCard);
-  cardContainer.append(cardElement);
+const cardElement = createCard(card, deleteOneCard);
+cardContainer.append(cardElement);
 });
+
+const placesList = document.querySelector('.places_list');
+
+const deleteCard = (cardElement) => {
+    cardElement.remove();
+}
+
