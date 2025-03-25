@@ -1,6 +1,6 @@
-import { openModal } from "./modal.js";
+// import { openModal } from "./modal.js";
 
-// @todo: Функция создания карточки
+// Функция создания карточки
 export function createCard(card, deleteCard, openImageModal) {
     const cardTemplate = document.querySelector("#card-template").content;
     const cardElement = cardTemplate
@@ -17,13 +17,8 @@ export function createCard(card, deleteCard, openImageModal) {
   imageCard.addEventListener("click", () => openImageModal(card.link, card.name));
   return cardElement;
 }
-// @todo: Функция удаления карточки
+// Функция удаления карточки
 export function deleteOneCard(evt) {
   evt.target.closest(".card").remove();
 
 }
-
-// // Вешаем обработчики на картинки карточек
-// imageCards.forEach((image) => {
-//     image.addEventListener('click', () => openModal(imageModal)); // Открываем попап с изображением
-// });
