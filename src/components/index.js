@@ -1,7 +1,7 @@
 import '../pages/index.css';
 import { createCard, deleteOneCard } from './card.js'; 
 import { openModal, closeModal } from './modal.js';
-import { initialCards } from './cards.js';
+// import { initialCards } from './cards.js';
 
 /* ========== DOM ЭЛЕМЕНТЫ ========== */
 // Основные элементы интерфейса
@@ -85,10 +85,10 @@ function handleAddCardSubmit(evt) {
 
 /* ========== ИНИЦИАЛИЗАЦИЯ ========== */
 // Загрузка начальных карточек
-initialCards.forEach((card) => {
-  const cardElement = createCard(card, deleteOneCard, openImageModal, handleCardLike);
-  cardContainer.append(cardElement);
-});
+// initialCards.forEach((card) => {
+//   const cardElement = createCard(card, deleteOneCard, openImageModal, handleCardLike);
+//   cardContainer.append(cardElement);
+// });
 
 // Обработчики кнопок
 editButton.addEventListener('click', () => {
