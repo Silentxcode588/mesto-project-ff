@@ -1,6 +1,7 @@
 import '../pages/index.css';
 import { createCard, deleteOneCard } from './card.js'; 
 import { openModal, closeModal } from './modal.js';
+import { enableValidation, clearValidation } from './validation.js';
 // import { initialCards } from './cards.js';
 
 /* ========== DOM ЭЛЕМЕНТЫ ========== */
@@ -24,6 +25,15 @@ const jobInput = profileForm.querySelector('.popup__input_type_description');
 const addCardForm = document.querySelector('.popup__form[name="new-place"]');
 const cardNameInput = addCardForm.querySelector('.popup__input_type_card-name');
 const cardLinkInput = addCardForm.querySelector('.popup__input_type_url');
+
+
+
+
+
+
+
+
+
 
 /* ========== ФУНКЦИИ ========== */
 // Функция открытия модального окна с изображением
@@ -83,13 +93,6 @@ function handleAddCardSubmit(evt) {
   addCardForm.reset();
 }
 
-/* ========== ИНИЦИАЛИЗАЦИЯ ========== */
-// Загрузка начальных карточек
-// initialCards.forEach((card) => {
-//   const cardElement = createCard(card, deleteOneCard, openImageModal, handleCardLike);
-//   cardContainer.append(cardElement);
-// });
-
 // Обработчики кнопок
 editButton.addEventListener('click', () => {
   nameInput.value = document.querySelector('.profile__title').textContent;
@@ -110,3 +113,23 @@ closeButtons.forEach((button) => {
 // Обработчики форм
 profileForm.addEventListener('submit', handleProfileSubmit);
 addCardForm.addEventListener('submit', handleAddCardSubmit);
+
+/**
+ * Объект опции:
+ * 1. Элемент формы.
+ * 2. Элемент поля ввода.
+ * 3. Кнопка отправки формы.
+ * 4. Класс для отключения кнопки.
+ * 5. Класс для выделения попапа цветом.
+ * 6. Класс для отображения попапа.
+ */
+// Объект настроек валидации
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible',
+};
+enableValidation(validationConfig);

@@ -11,6 +11,7 @@
   </head>
   <body class="page">
     <div class="page__content">
+      <!-- HEADER -->
       <header class="header page__section">
         <img
           src="<%=require('./images/logo.svg')%>"
@@ -18,6 +19,7 @@
           class="logo header__logo"
         />
       </header>
+      <!-- MAIN -->
       <main class="content">
         <section class="profile page__section">
           <div
@@ -35,64 +37,86 @@
           <ul class="places__list"></ul>
         </section>
       </main>
+      <!-- FOOTER  -->
       <footer class="footer page__section">
         <p class="footer__copyright">© 2021 Mesto Russia</p>
       </footer>
+
+      <!-- POPUP PROFILE -->
       <div class="popup popup_type_edit popup_is-animated">
         <div class="popup__content">
           <button type="button" class="popup__close"></button>
           <h3 class="popup__title">Редактировать профиль</h3>
-          <form class="popup__form" name="edit-profile">
+          <form class="popup__form" name="edit-profile" novalidate>
             <input
+            id="profile__name-input"
               type="text"
               minlength="2"
               maxlength="40"
               name="name"
               class="popup__input popup__input_type_name"
-              placeholder="Жак-Ив Кусто"
+              placeholder="Имя"
               required
+              pattern="^^[a-zA-Zа-яА-Я\sёЁ\-]+$"
+              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
             />
+            <span class="form__input-error profile__name-input-error"></span>
             <input
+            id="profile__description-input" 
               type="text"
               minlength="2"
               maxlength="200"
               name="description"
               class="popup__input popup__input_type_description"
-              placeholder="Исследователь океана"
+              placeholder="Занятие"
+              pattern="^[a-zA-Zа-яА-Я\sёЁ\-]+$"
+              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
               required
             />
+            <span class="form__input-error profile__description-input-error"></span>
+            <!-- <span class="description-error popup__error"></span> -->
             <button type="submit" class="button popup__button">
               Сохранить
             </button>
           </form>
         </div>
       </div>
+
+      <!-- POPUP NEW PLACE-->
       <div class="popup popup_type_new-card popup_is-animated">
         <div class="popup__content">
           <button type="button" class="popup__close"></button>
           <h3 class="popup__title">Новое место</h3>
-          <form class="popup__form" name="new-place">
+          <form class="popup__form" name="new-place" novalidate>
             <input
               type="text"
               minlength="2"
+              maxlength="30"
               name="place-name"
               class="popup__input popup__input_type_card-name"
               placeholder="Название"
+              id="place__name-input" 
+              pattern="^[a-zA-Zа-яА-ЯёЁ\s\-]+$"
+            data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы" 
               required
             />
+            <span class="form__input-error place__name-input-error"></span>
             <input
               type="url"
               name="link"
               class="popup__input popup__input_type_url"
               placeholder="Ссылка на картинку"
+              id="place_link-input" 
               required
             />
+            <span class="form__input-error place_link-input-error"></span>
             <button type="submit" class="button popup__button">
               Сохранить
             </button>
           </form>
         </div>
       </div>
+
       <div class="popup popup_type_image popup_is-animated">
         <div class="popup__content popup__content_content_image">
           <button type="button" class="popup__close"></button>
