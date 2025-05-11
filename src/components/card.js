@@ -1,3 +1,4 @@
+
 /* ========== ИМПОРТЫ ========== */
 import { toggleLike } from './api.js';
 import { handleCheckError } from './index.js';
@@ -51,8 +52,8 @@ export function deleteOneCard(cardItem) {
     cardItem.remove();
 }
 
-// Функция обработки лайка
-export function likeCard(cardItem, cardId) {
+//Функция обработки лайка
+export function likeCard(cardItem, cardId, userId) {
     const likeButton = cardItem.querySelector('.card__like-button');
     const cardNumberOfLikes = cardItem.querySelector('.card__number-of-likes');
     const currentLikes = JSON.parse(cardItem.dataset.likes);
@@ -60,17 +61,34 @@ export function likeCard(cardItem, cardId) {
     // Проверяем текущее состояние лайка
     const isLiked = likeButton.classList.contains('card__like-button_is-active');
   
-    toggleLike(cardId, !isLiked)
+    toggleLike(cardId, isLiked)
       .then(updatedCard => {
         // Обновляем данные карточки
         cardNumberOfLikes.textContent = updatedCard.likes.length;
         cardItem.dataset.likes = JSON.stringify(updatedCard.likes);
-        
+      
         // Обновляем состояние кнопки
         likeButton.classList.toggle('card__like-button_is-active');
       })
       .catch(handleCheckError);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // // Функция создания карточки
 // export function createCard(card, deleteCallback, imageCallback, likeCallback,userId) {
 //     // 1. Находим шаблон карточки и клонируем его

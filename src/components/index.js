@@ -176,11 +176,13 @@ function handleEditAvatar(evt) {
     });
 }
 
-// Обработчик события для лайка карточки
+//Обработчик события для лайка карточки
 function handleLikeClick(cardItem, cardId) {
   const currentLikes = JSON.parse(cardItem.dataset.likes);
   likeCard(cardItem, cardId, currentLikes, userId);
 }
+
+
 
 // Обработчик события для удаления карточки
 function handleDeleteClick(cardItem, cardId) {
