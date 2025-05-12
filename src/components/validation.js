@@ -36,7 +36,6 @@ function setEventListeners(form, config) {
   inputs.forEach((input) => {
     input.addEventListener('input', () => {
       isValid(form, input, config);
-      toggleButtonState(inputs, submitButton, config);
     });
   });
   form.addEventListener('input', () => {
@@ -68,6 +67,7 @@ function hideInputError(input, errorElement, config) {
   input.classList.remove(config.inputErrorClass);
   errorElement.textContent = '';
   errorElement.classList.remove(config.errorClass);
+  input.setCustomValidity("");
 }
 
 // Переключение состояния кнопки
