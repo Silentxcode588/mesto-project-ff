@@ -36,13 +36,10 @@ function setEventListeners(form, config) {
   inputs.forEach((input) => {
     input.addEventListener('input', () => {
       isValid(form, input, config);
+      toggleButtonState(inputs, submitButton, config);
     });
   });
-  form.addEventListener('input', () => {
-    const isFormValid = inputs.every((input) => input.validity.valid);
-    submitButton.disabled = !isFormValid;
-    submitButton.classList.toggle(config.inactiveButtonClass, !isFormValid);
-  });
+  
 }
 
 // Проверка валидности поля

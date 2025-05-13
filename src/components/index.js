@@ -134,25 +134,33 @@ function handleAddCardSubmit(evt) {
   renderLoading(true, formSubmitButton);
 
   addCard(name, link)
-    .then(newCard => {
-      const cardItem = createCard(
-        newCard, 
-        cardTemplate, 
-        handleDeleteClick, 
-        handleLikeClick, 
-        openImageModal, 
-        userId
-      );
-      placesList.prepend(cardItem);
-      closeModal(addCardModal);
-      addCardForm.reset();
-      addCardSubmitButton.disabled = true;
-      addCardSubmitButton.classList.add(validationConfig.inactiveButtonClass);
-    })
+  .then(newCard => {
+    const cardItem = createCard(
+      newCard, 
+      cardTemplate, 
+      handleDeleteClick, 
+      handleLikeClick, 
+      openImageModal, 
+      userId
+    );
+    placesList.prepend(cardItem);
+    closeModal(addCardModal);
+    resetForm(addCardForm, formSubmitButton);
+  })
     .catch(handleCheckError)
     .finally(() => {
       renderLoading(false, formSubmitButton);
     });
+}
+
+// Вспомогательная функция для сброса формы
+function resetForm(form, submitButton) {
+  form.reset();
+  // Сбрасываем валидацию
+  clearValidation(form, validationConfig);
+  // Блокируем кнопку
+  submitButton.disabled = true;
+  submitButton.classList.add(validationConfig.inactiveButtonClass);
 }
 
 // Обработчик для редактирования аватара
@@ -210,13 +218,6 @@ addCardButton.addEventListener('click', () => {
   openModal(addCardModal);
 });
 
-// addCardButton.addEventListener('click', () => {
-//   placeNameInput.value = '';
-//   linkInput.value = '';
-//   addCardSubmitButton.disabled = true;
-//   addCardSubmitButton.classList.add(validationConfig.inactiveButtonClass);
-//   openModal(addCardModal);
-// });
 
 profileImage.addEventListener('click', () => {
   clearValidation(editAvatarForm, validationConfig);
